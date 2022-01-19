@@ -27,6 +27,9 @@ function CovidMap() {
     distance:"",
     infected:""
   })
+  const color_arr = [null,"green","yellow","orange","red"];
+
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -50,6 +53,7 @@ function CovidMap() {
   if (local == null) {
     return <p>Loading ...</p>;
   }
+  
   return (
     <div>
       <h1>대한민국 지역별 코로나 현황</h1>
@@ -58,23 +62,23 @@ function CovidMap() {
       <div>확진자 수 : {localData.infected}명</div>
 
       <svg width="700px" height="1000px" viewBox="0 0 800 1200">
-        <Seoul onClick={(e) => click(e.target.id)} />
-        <Gyeonggi onClick={(e) =>click(e.target.id)} />
-        <Gangwon onClick={(e) =>click(e.target.id)}/>
-        <Incheon onClick={(e) =>click(e.target.id)}/>
-        <Chungnam onClick={(e) =>click(e.target.id)}/>
-        <Chungbuk onClick={(e) =>click(e.target.id)}/>
-        <Sejong onClick={(e) =>click(e.target.id)}/>
-        <Daejeon onClick={(e) =>click(e.target.id)}/>
-        <Gyeongnam onClick={(e) =>click(e.target.id)}/>
-        <Gyeongbuk onClick={(e) =>click(e.target.id)}/>
-        <Jeonbuk onClick={(e) =>click(e.target.id)}/>
-        <Jeonnam onClick={(e) =>click(e.target.id)}/>
-        <Ulsan onClick={(e) =>click(e.target.id)}/>
-        <Busan onClick={(e) =>click(e.target.id)}/>
-        <Daegu onClick={(e) =>click(e.target.id)}/>
-        <Gwangju onClick={(e) =>click(e.target.id)}/>
-        <Jeju onClick={(e) =>click(e.target.id)}/>
+        <Seoul onClick={(e) => click(e.target.id)}  fill={color_arr[local.data["서울"].level]}/>
+        <Gyeonggi onClick={(e) =>click(e.target.id)} fill={color_arr[local.data["경기"].level]}/>
+        <Gangwon onClick={(e) =>click(e.target.id)} fill={color_arr[local.data["강원"].level]}/>
+        <Incheon onClick={(e) =>click(e.target.id)} fill={color_arr[local.data["인천"].level]}/>
+        <Chungnam onClick={(e) =>click(e.target.id)} fill={color_arr[local.data["충남"].level]}/>
+        <Chungbuk onClick={(e) =>click(e.target.id)} fill={color_arr[local.data["충북"].level]}/>
+        <Sejong onClick={(e) =>click(e.target.id)} fill={color_arr[local.data["세종"].level]}/>
+        <Daejeon onClick={(e) =>click(e.target.id)} fill={color_arr[local.data["대전"].level]}/>
+        <Gyeongnam onClick={(e) =>click(e.target.id)} fill={color_arr[local.data["경남"].level]}/>
+        <Gyeongbuk onClick={(e) =>click(e.target.id)} fill={color_arr[local.data["경북"].level]}/>
+        <Jeonbuk onClick={(e) =>click(e.target.id)} fill={color_arr[local.data["전북"].level]}/>
+        <Jeonnam onClick={(e) =>click(e.target.id)} fill={color_arr[local.data["전남"].level]}/>
+        <Ulsan onClick={(e) =>click(e.target.id)} fill={color_arr[local.data["울산"].level]}/>
+        <Busan onClick={(e) =>click(e.target.id)} fill={color_arr[local.data["부산"].level]}/>
+        <Daegu onClick={(e) =>click(e.target.id)} fill={color_arr[local.data["대구"].level]}/>
+        <Gwangju onClick={(e) =>click(e.target.id)} fill={color_arr[local.data["광주"].level]}/>
+        <Jeju onClick={(e) =>click(e.target.id)} fill={color_arr[local.data["제주"].level]}/>
       </svg>
     </div>
   );
