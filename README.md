@@ -1,9 +1,35 @@
-# Elice 코로나 맵 실습
+# 코로나 맵 실습을 통한 axios 활용
+
 ## Usage
 ```sh
 > python app.py
 > yarn start
 ```
+## axios
+```
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.post("http://localhost:5000/covidData");
+        setLocal(response.data)
+
+      } catch {
+        console.log("Error");
+      }
+    };
+    fetchData();
+  }, []);
+```
+axios를 통해 URL에서 데이터를 받아와 response.data를 setLocal 이라는 state에 저장함.
+
+```
+setLocalData({
+      distance:local.data[id].level,
+      infected:local.data[id].num
+    })
+```
+click 한 지역의 id를 받아와 지역별 거리두기 단계와 확진자 수에 접근함.
+
 ## POST /covidData 
 ```json
 {
